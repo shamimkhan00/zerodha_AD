@@ -1,0 +1,16 @@
+.mainBody{
+    padding: 4%;
+}
+.user{
+    border-bottom: 1px solid #ccc;
+    font-size: 1.5rem;
+    padding-bottom: 2.5%;
+}
+
+.EuiCom{
+    margin-top: 3%;
+    display: flex;
+}
+
+
+
