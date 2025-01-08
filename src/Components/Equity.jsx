@@ -40,3 +40,4 @@ export const Equity = ({title,logo,margin,marginUsed,opBal}) => {
         </div>
     )
 }
+//hello
