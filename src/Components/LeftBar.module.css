@@ -1,0 +1,11 @@
+.Bar{
+    margin: 0;
+    padding: 15px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    height: 20px
+    
+}

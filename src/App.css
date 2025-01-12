@@ -1,0 +1,13 @@
+.mainBody{
+    display: flex;
+}
+
+.left{
+    border: 2px solid blue;
+    width: 35%;
+}
+
+.right{
+    border: 2px solid red;
+    width: 65%;
+}
