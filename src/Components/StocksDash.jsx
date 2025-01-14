@@ -3,31 +3,31 @@ import React, { useState } from 'react';
 import Plot from 'react-plotly.js';
 import stockData from './StockDataDemoJJ.json';
 
-export const StockDash = () => {
-    const [selectedStock, setSelectedStock] = useState('AAPL');
+export const StockDash = ({chartData,selectedStock}) => {
+    // const [selectedStock, setSelectedStock] = useState('AAPL');
 
-    // Format data to match the JSON structure
-    const formatData = (ticker) => {
-        return stockData
-            .filter(item => item.Ticker === ticker)
-            .map(item => ({
-                date: item.Date,
-                open: parseFloat(item.Open),
-                high: parseFloat(item.High),
-                low: parseFloat(item.Low),
-                close: parseFloat(item.Close),
-            }))
-            .filter(item => item.open && item.high && item.low && item.close) // Ensure valid data
-            .reverse();
-    };
+    // // Format data to match the JSON structure
+    // const formatData = (ticker) => {
+    //     return stockData
+    //         .filter(item => item.Ticker === ticker)
+    //         .map(item => ({
+    //             date: item.Date,
+    //             open: parseFloat(item.Open),
+    //             high: parseFloat(item.High),
+    //             low: parseFloat(item.Low),
+    //             close: parseFloat(item.Close),
+    //         }))
+    //         .filter(item => item.open && item.high && item.low && item.close) // Ensure valid data
+    //         .reverse();
+    // };
 
-    const stockOptions = [...new Set(stockData.map(item => item.Ticker))]; // Get unique tickers dynamically
-    const chartData = formatData(selectedStock);
+    // const stockOptions = [...new Set(stockData.map(item => item.Ticker))]; // Get unique tickers dynamically
+    // const chartData = formatData(selectedStock);
 
     return (
         <div>
-            <h2>Stock Candlestick Chart</h2>
-            <div>
+            {/* <h2>Stock Candlestick Chart</h2> */}
+            {/* <div>
                 {stockOptions.map(stock => (
                     <button
                         key={stock}
@@ -44,7 +44,7 @@ export const StockDash = () => {
                         {stock}
                     </button>
                 ))}
-            </div>
+            </div> */}
 
             <Plot
                 data={[{

@@ -7,6 +7,17 @@ import './App.css'
 import { useState } from 'react'
 
 function App() {
+
+  const [parentChartData, setParentChartData] = useState([]); // State to store chart data in parent
+  const [parentSelectedStock, setParentSelectedStock] = useState('AAPL');
+  const handleChartDataChange = (updatedChartData) => {
+    setParentChartData(updatedChartData); // Update parent state with new chart data
+  };
+
+  const handleSelectedStockChange = (selectedStock) => {
+    setParentSelectedStock(selectedStock); // Update parent state with selectedStock
+  };
+
   const [activeComponent, setActiveComponent] = useState('Dashboard');
 
   const renderComponent = () => {
@@ -14,7 +25,7 @@ function App() {
       case 'Dashboard':
         return <Dashboard></Dashboard>;
       case 'Stocks':
-        return <StockDash></StockDash>;
+        return <StockDash chartData={parentChartData} selectedStock={parentSelectedStock}></StockDash>;
       default:
         return <Dashboard></Dashboard>;
     }
@@ -23,13 +34,16 @@ function App() {
     <>
       <div className='mainBody'>
         <div className='left'>
-          <LeftBar></LeftBar>
+          <LeftBar onChartDataChange={handleChartDataChange} onStockChange={handleSelectedStockChange} setActiveComponent={setActiveComponent}></LeftBar>
           {/* <Leftcom></Leftcom> */}
         </div>
+
         <div className='right'>
           <Topbar setActiveComponent={setActiveComponent}></Topbar>
-          {renderComponent()}
-          {/* <Dashboard></Dashboard> */}
+          
+          {renderComponent()} 
+          {/* MAIN RIGHT COMPONENT */}
+          
 
           
         </div>

@@ -9,7 +9,7 @@ export const Topbar = ({setActiveComponent}) => {
                     className={styles.Toplogo} />
                 <div className={styles.buttonbar}>
                     <button onClick={()=>setActiveComponent('Dashboard')}>Dashboard</button>
-                    <button onClick={()=>setActiveComponent('Stocks')}>Stocks</button>
+                    {/* <button onClick={()=>setActiveComponent('Stocks')}>Stocks</button> */}
                     <CiBellOn className={styles.notificationIcon}></CiBellOn>
                     <div className={styles.account}>
                         Account
