@@ -1,28 +1,79 @@
 .mainBar {
     margin: 0;
-    padding: 15px;
+    padding: 10px 10px;
     background-color: #f0f0f0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
-    height: 20px;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
-.buttonbar{
-    display: flex;
-    gap: 40px;
-}
-
-.buttonbar button{
-    background-color: transparent;
-    border: none;
-    color: #333;
-    cursor: pointer;
+.marketInfo {
+    font-size: 14px;
+    color: #555;
     font-weight: bold;
 }
 
+.marketInfo span {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.negativeValue {
+    color: red;
+}
+
+.positiveValue {
+    color: green;
+}
+
+.buttonbar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: flex-start;
+}
+
+.activeButton {
+    color: lightcoral;
+    /* background-color: lightcoral; */
+}
+.buttonbar button {
+    background-color: transparent;
+    border: none;
+    color: #565151;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.buttonbar button:hover {
+    color: lightcoral;
+}
+
+
 .Toplogo {
-    width: auto;
-    height: 14px;  
+    width: 30px;
+    position: absolute;
+    left: 390px;
+}
+
+.account {
+    font-size: 1.5rem;
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.notificationIcon {
+    font-size: 1.5rem;
+    cursor: pointer;
 }

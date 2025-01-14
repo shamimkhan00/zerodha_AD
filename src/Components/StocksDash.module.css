@@ -1,3 +1,59 @@
-.stockBorder{
-    border: 2px solid purple;
+.container {
+    padding: 20px;
+    /* background: linear-gradient(to right, #ffffff, #f3f4f6); */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 850px;
+    margin-top: 70px;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+}
+
+.chartContainer {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.chartContainer:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.stockButton {
+    margin: 10px;
+    padding: 12px;
+    background-color: rgba(128, 128, 128, 0.6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.stockButton:hover {
+    background-color: rgba(173, 216, 230, 0.8); /* Light blue color */
+    transform: scale(1.05);
+}
+
+.stockButton.selected {
+    background-color: rgba(0, 128, 0, 0.8); /* Green for selected button */
+}
+
+/* For the stock button label to be on the left */
+.stockButton span {
+    margin-left: 10px;
 }
