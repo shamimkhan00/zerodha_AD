@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Plot from 'react-plotly.js';
 import stockData from './StockDataDemoJJ.json';
 
-export const StockDash = ({chartData,selectedStock}) => {
+export const StockDash = ({ chartData, selectedStock }) => {
     // const [selectedStock, setSelectedStock] = useState('AAPL');
 
     // // Format data to match the JSON structure
@@ -47,18 +47,20 @@ export const StockDash = ({chartData,selectedStock}) => {
             </div> */}
 
             <Plot
-                data={[{
-                    x: chartData.map(item => item.date),
-                    open: chartData.map(item => item.open),
-                    high: chartData.map(item => item.high),
-                    low: chartData.map(item => item.low),
-                    close: chartData.map(item => item.close),
-                    type: 'candlestick',
-                    xaxis: 'x',
-                    yaxis: 'y',
-                    increasing: { line: { color: 'green' } },
-                    decreasing: { line: { color: 'red' } },
-                }]}
+                data={[
+                    {
+                        x: chartData.map(item => item.date).reverse(), 
+                        open: chartData.map(item => item.open).reverse(), 
+                        high: chartData.map(item => item.high).reverse(), 
+                        low: chartData.map(item => item.low).reverse(), 
+                        close: chartData.map(item => item.close).reverse(), 
+                        type: 'candlestick',
+                        xaxis: 'x',
+                        yaxis: 'y',
+                        increasing: { line: { color: 'green' } },
+                        decreasing: { line: { color: 'red' } },
+                    },
+                ]}
                 layout={{
                     title: `${selectedStock} Candlestick Chart`,
                     xaxis: { title: 'Date' },
