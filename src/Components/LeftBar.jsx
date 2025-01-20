@@ -1,9 +1,9 @@
 import styles from "./LeftBar.module.css"
 import React, { useState } from 'react';
-import Plot from 'react-plotly.js';
 import stockData from './StockDataDemoJJ.json';
 
-export const LeftBar = ({onChartDataChange,onStockChange,setActiveComponent}) => {
+
+export const LeftBar = ({ onChartDataChange, onStockChange, setActiveComponent }) => {
     const [selectedStock, setSelectedStock] = useState();
 
     const formatData = (ticker) => {
@@ -21,7 +21,7 @@ export const LeftBar = ({onChartDataChange,onStockChange,setActiveComponent}) =>
     };
 
     const stockOptions = [...new Set(stockData.map(item => item.Ticker))]; // Get unique tickers dynamically
-    const chartData = formatData(selectedStock);
+
 
     const handleStockChange = (stock) => {
         setSelectedStock(stock);
@@ -29,37 +29,71 @@ export const LeftBar = ({onChartDataChange,onStockChange,setActiveComponent}) =>
         onChartDataChange(updatedChartData); // Call the prop function with updated data
         onStockChange(stock);
         setActiveComponent('Stocks');
-      };
+    };
+
+    //Stock button change last value and percentage
+    const getPercentageChange = (stock) => {
+        const stockDataForStock = stockData.filter(item => item.Ticker === stock);
+        const latestClose = stockDataForStock[0]?.Close;
+        const previousClose = stockDataForStock[1]?.Close;
+
+        if (latestClose && previousClose) {
+            const change = ((latestClose - previousClose) / previousClose) * 100;
+            return change.toFixed(2);
+        }
+
+        return 0;
+    };
+
+    const getStockValueAndColor = (stock) => {
+        const stockDataForStock = stockData.filter(item => item.Ticker === stock);
+        const latestClose = stockDataForStock[0]?.Close;
+        const previousClose = stockDataForStock[1]?.Close;
+
+        if (latestClose && previousClose) {
+            const change = latestClose - previousClose;
+            if (change > 0) {
+                return { value: latestClose, color: 'green' };
+            } else if (change < 0) {
+                return { value: latestClose, color: 'red' };
+            }
+        }
+
+        return { value: 0, color: 'gray' };  // Default value and color
+    };
+    //change
 
     return (
         <div>
             <div className={styles.Bar}>
-                NIFTY 50 18181.75 -104.75 (-0.57%)
-                SENSEX 61560.64 -371.83 (-0.60%)
+                <div className={styles.topBarContain}>
+                    <span>
+                        NIFTY 50 <span style={{ color: "green" }}>18181.75</span>
+                    </span>
+                    <span>
+                        SENSEX <span style={{ color: "green" }}>61560.64</span>
+                    </span>
+                </div>
             </div>
-            <div>
-                <div>
-                    {stockOptions.map(stock => (
+            <div className={styles.leftDownBox}>
+                {stockOptions.map(stock => {
+                    const { value, color } = getStockValueAndColor(stock);
+                    const percentageChange = getPercentageChange(stock);
+                    return (
+
                         <button
                             key={stock}
                             onClick={() => handleStockChange(stock)}
-                            style={{
-                                margin: '5px',
-                                padding: '10px',
-                                backgroundColor: selectedStock === stock ? 'green' : 'gray',
-                                color: 'white',
-                                borderRadius: '5px',
-                                fontWeight: 'bold',
-                            }}
+                            className={styles.leftDown}
                         >
-                            {stock}
+                            {<span className={styles.stockText}>{stock}</span>}
+                            <div className={styles.valueper}>
+                                {<span style={{ color: color }}>{value}</span>}
+                                {<span style={{ color: color }}>{percentageChange}%</span>}
+                            </div>
                         </button>
-                    ))}
-                </div>
-
-
-
-
+                    )
+                })}
             </div>
 
         </div>
