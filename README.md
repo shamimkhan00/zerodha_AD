@@ -34,10 +34,6 @@ npm start
 ```
 
 
-```env
-REACT_APP_API_KEY=your_api_key_here
-```
-
 ## Usage
 
 - Search for a stock symbol to view stock details.
